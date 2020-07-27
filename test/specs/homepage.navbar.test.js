@@ -34,9 +34,9 @@ describe('Homepage Navigation', () => {
         expect(browser).toHaveUrl('https://www.onemap.sg/main/v2/schoolquerymenu')
         browser.saveScreenshot('data/screenshots/Should navigate to School information page from navigation menu.png')
     })
-    it('Should navigate to PHPC page from navigation menu', () => {
-        HomePage.phpcNearYouButton.click()
-        expect(browser).toHaveUrl('https://www.onemap.sg/main/v2/phpcmap')
-        browser.saveScreenshot('data/screenshots/Should navigate to PHPC page from navigation menu.png')
-    })
+    // it('Should navigate to PHPC page from navigation menu', () => {
+    //     HomePage.phpcNearYouButton.click()
+    //     expect(browser).toHaveUrl('https://www.onemap.sg/main/v2/phpcmap')
+    //     browser.saveScreenshot('data/screenshots/Should navigate to PHPC page from navigation menu.png')
+    // })
 })
