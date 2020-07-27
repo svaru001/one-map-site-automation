@@ -24,5 +24,8 @@
     "chromedriver": "^84.0.1",
     "wdio-chromedriver-service": "^6.0.3",
     "wdio-mochawesome-reporter": "^4.0.0"
+  },
+  "dependencies": {
+    "@wdio/junit-reporter": "^6.3.4"
   }
 }
