@@ -1,0 +1,14 @@
+[
+    {
+        "source":"Ripple Bay",
+        "destination": "Marina Bay Sands"
+    },
+    {
+        "source":"Marina Bay Sands",
+        "destination": "Ripple Bay"
+    },
+    {
+        "source":"Occean Front Suites",
+        "destination": "Bayfront"
+    }
+]
