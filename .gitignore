@@ -4,6 +4,3 @@ allure-report/*
 report/*
 data/screenshots/*
 !data/screenshots/.keep
-!allure-results/.keep
-!allure-report/.keep
-!report/.keep
