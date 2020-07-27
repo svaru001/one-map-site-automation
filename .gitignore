@@ -1,1 +1,7 @@
 node_modules/
+allure-results/*
+allure-report/*
+report/*
+!allure-results/.keep
+!allure-report/.keep
+!report/.keep
