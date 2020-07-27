@@ -1,11 +1,15 @@
 import HomePage from '../../pages/map.home.page'
 import ThemePage from '../../pages/theme.page'
+const testData = require('../../data/testdata.json')
 describe('Homepage Field Validation', () => {
     before(()=>{
         browser.maximizeWindow()
         HomePage.open()
-        HomePage.searchBox.setValue('Pasir Ris Beach Park')
-        HomePage.searchResult.waitForDisplayed()
+        HomePage.searchBox.setValue(testData[0]['source'])
+        if(!HomePage.searchResult.waitForDisplayed())
+        {   HomePage.searchBox.clearValue()
+            HomePage.searchBox.setValue(testData[0]['source'])
+        }
         HomePage.searchResult.click()
         HomePage.resultSideMenu.waitForDisplayed()
     })
