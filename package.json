@@ -7,7 +7,9 @@
     "test": "./node_modules/.bin/wdio configs/wdio.conf.js",
     "cicd-test": "./node_modules/.bin/wdio configs/wdio.cicd.conf.js",
     "docker-selenium-hub": "docker-compose up -d",
-    "docker-test": "./node_modules/.bin/wdio configs/docker.conf.js"
+    "docker-tests": "./node_modules/.bin/wdio configs/docker.conf.js",
+    "saucelab-tests": "./node_modules/.bin/wdio configs/saucelab.cloud.conf.js",
+    "report": "allure generate --clean && allure open"
   },
   "keywords": [],
   "author": "",
