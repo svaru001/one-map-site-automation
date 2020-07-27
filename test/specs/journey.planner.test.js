@@ -3,7 +3,7 @@ import ThemePage from '../../pages/theme.page'
 const testData = require('../../data/testdata.json')
 const assert = require('assert')
 
-describe('Search', () => {
+describe('Journey Planner', () => {
     before(()=>{
 
         browser.maximizeWindow()
@@ -23,16 +23,20 @@ describe('Search', () => {
     })
     it('Should mark source on map when journey is planned', () => {
         expect(HomePage.sourceIcon).toBeDisplayed()
+        browser.saveScreenshot('data/screenshots/Should mark source on map when journey is planned.png')
     });
     it('Should mark destination on map when journey is planned ', () => {
         expect(HomePage.destinationIcon).toBeDisplayed()
+        browser.saveScreenshot('data/screenshots/Should mark destination on map when journey is planned.png')
     });
     it('Should display Transit Route options on map', () => {
         expect(HomePage.transitDetails).toBeDisplayed()
+        browser.saveScreenshot('data/screenshots/Should display Transit Route options on map.png')
     });
     it('Should display Bus Route options on map', () => {
         HomePage.journeyBusButton.click()
         expect(HomePage.transitDetails).toBeDisplayed()
+        browser.saveScreenshot('data/screenshots/Should display Bus Route options on map.png')
     });
     
 });
