@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/wdio configs/wdio.conf.js",
-    "cicd-test": "./node_modules/.bin/wdio configs/wdio.cicd.conf.js"
+    "cicd-test": "./node_modules/.bin/wdio configs/wdio.cicd.conf.js",
+    "docker-selenium-hub": "docker-compose up -d",
+    "docker-test": "./node_modules/.bin/wdio configs/docker.conf.js"
   },
   "keywords": [],
   "author": "",

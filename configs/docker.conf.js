@@ -7,6 +7,9 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
+    hostname: "localhost",
+    port: 4444,
+    path: '/wd/hub',
     //
     // ==================
     // Specify Test Files
@@ -21,7 +24,7 @@ exports.config = {
     ],
     // Patterns to exclude.
     exclude: [
-        './test/specs/**/map.actions.test.js'
+        // 'path/to/excluded/files'
     ],
     //
     // ============
@@ -45,25 +48,46 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-    
-        // maxInstances can get overwritten per capability. So if you have an in-house Selenium
-        // grid with only 5 firefox instances available you can make sure that not more than
-        // 5 instances get started at a time.
-        maxInstances: 1,
-        //
-        browserName: 'chrome',
-        acceptInsecureCerts: true,
-        'goog:chromeOptions': {
+    capabilities: [
+        {
+          // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+          // grid with only 5 Chrome instances available you can make sure that not more than
+          // 5 instances get started at a time.
+          maxInstances: 1,
+          browserName: 'chrome',
+          'goog:chromeOptions': {
             // to run chrome headless the following flags are required
             // (see https://developers.google.com/web/updates/2017/04/headless-chrome)
-            //args: ['--headless', '--disable-gpu'],
+             //args: ['--headless', '--disable-gpu'],
           }
-        // If outputDir is provided WebdriverIO can capture driver session logs
-        // it is possible to configure which logTypes to include/exclude.
-        // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
-        // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+        },
+  
+        // {
+        //   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        //   // grid with only 5 firefox instances available you can make sure that not more than
+        //   // 5 instances get started at a time.
+        //   maxInstances: 1,
+        //   browserName: 'firefox',
+        //   "moz:firefoxOptions": {
+        //     // flag to activate Firefox headless mode (see https://github.com/mozilla/geckodriver/blob/master/README.md#firefox-capabilities for more details about moz:firefoxOptions)
+        //     args: ['-headless']
+        //   }
+        // },
+  
+
+  
+        // {
+        //   // maxInstances can get overwritten per capability. So if you have an in-house Selenium
+        //   // grid with only 5 IE instances available you can make sure that not more than
+        //   // 5 instances get started at a time.
+        //   maxInstances: 5,
+        //   browserName: 'internet explorer',
+        //   acceptUntrustedCertificates: true,
+        //   ignoreProtectedModeSettings: true,    //only applicable to IE browser
+        //   ignoreZoomSetting: true,              //only applicable to IE browser
+        //   ensureCleanSession: true,
+        // },
+    ],
     //
     // ===================
     // Test Configurations
@@ -71,7 +95,7 @@ exports.config = {
     // Define all options that are relevant for the WebdriverIO instance here
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
-    logLevel: 'info',
+    logLevel: 'silent',
     //
     // Set specific log levels per logger
     // loggers:
@@ -111,7 +135,16 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['docker'],
+    // dockerLogs: './',
+    // dockerOptions: {
+    //     image: 'selenium/standalone-chrome:latest',
+    //     healthCheck: 'http://localhost:4444',
+    //     options: {
+    //         p: ['4444:4444'],
+    //         shmSize: '2g'
+    //     }
+    // },
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -137,13 +170,7 @@ exports.config = {
             disableWebdriverStepsReporting: true,
             disableMochaHooks: true
             //isableWebdriverScreenshotsReporting: false,
-        }],
-  ['junit', {
-    outputDir: 'report/junit',
-    outputFileFormat: function(options) { // optional
-      return `test-${options.cid}-results.xml`
-    }
-  }]
+        }]
     ],
 
 
@@ -152,7 +179,6 @@ exports.config = {
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
     mochaOpts: {
-        // Babel setup
         require: ['@babel/register'],
         ui: 'bdd',
         timeout: 60000
@@ -170,8 +196,25 @@ exports.config = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-    // onPrepare: function (config, capabilities) {
-    // },
+    onPrepare: function (config, capabilities) {
+
+            // const readline = require("readline");
+            // var fs = require('fs');
+            // const rl = readline.createInterface({
+            //     input: process.stdin,
+            //     output: process.stdout
+            // });
+
+            // rl.question("Please share any Git Repo  >>", function(name) {
+            //     fs.writeFile('./data/repoUrl.txt', name, function (err) {
+            //     if (err) return console.log(err);
+            //     console.log('Hello World > helloworld.txt');
+            //     process.exit(0)
+            //     });
+
+            // });
+
+    },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
