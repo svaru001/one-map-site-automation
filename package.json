@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/wdio configs/wdio.conf.js"
+    "test": "./node_modules/.bin/wdio configs/wdio.conf.js",
+    "cicd-test": "./node_modules/.bin/wdio configs/wdio.cicd.conf.js"
   },
   "keywords": [],
   "author": "",
